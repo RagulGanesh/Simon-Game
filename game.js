@@ -2,6 +2,7 @@ buttonColours = ["red", "blue", "green", "yellow"];
 userClickedPattern = [];
 gamePattern = [];
 high_score=0;
+device=0;
 var levelno = 0,
   toggle = 0;
 function nextSequence() {
@@ -41,19 +42,28 @@ function animatePress(currentColour) {
   }, 100);
 }
 
-$(document).keypress(function (event) {
-  if (!toggle) {
-    nextSequence();
-    toggle = 1;
-  }
-});
 
-$(document).touchstart(function (event) {
+if(device==0){
+  $(document).keypress(function (event) {
+    if (!toggle) {
+      nextSequence();
+      toggle = 1;
+    }
+  });
+}
+else{
   if (!toggle) {
     nextSequence();
     toggle = 1;
   }
-});
+}
+
+// $(document).touchstart(function (event) {
+//   if (!toggle) {
+//     nextSequence();
+//     toggle = 1;
+//   }
+// });
 
 function checkAnswer(currentLevel) {
   if (userClickedPattern[currentLevel] === gamePattern[currentLevel]) {

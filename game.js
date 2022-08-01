@@ -48,6 +48,13 @@ $(document).keypress(function (event) {
   }
 });
 
+$(document).touchstart(function (event) {
+  if (!toggle) {
+    nextSequence();
+    toggle = 1;
+  }
+});
+
 function checkAnswer(currentLevel) {
   if (userClickedPattern[currentLevel] === gamePattern[currentLevel]) {
     if (userClickedPattern.length === gamePattern.length) {
